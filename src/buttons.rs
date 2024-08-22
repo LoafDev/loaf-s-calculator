@@ -8,13 +8,10 @@ use macroquad::{
     },
 };
 
-use crate::WIN_H;
+use crate::WIN_W;
 
 //button's bad implementation offset
-pub const FIRST: f32 = 170.;
-pub const SECOND: f32 = 340.;
-pub const THIRD: f32 = 510.;
-pub const FOURTH: f32 = 680.;
+const BUTTON_SIZE: Vec2 = vec2(100., 120.);
 
 pub struct Buttons<'a> {
     pub num_0: Button<'a>,
@@ -38,20 +35,39 @@ pub struct ButtonSkin {
 
 impl Default for Buttons<'_> {
     fn default() -> Self {
-        let init_vec = Vec2::new(10., WIN_H - 200.);
-        let button_offset = -250.;
+        let init_vec = Vec2::new(WIN_W - 300., 105.);
 
         Buttons {
-            num_0: widgets::Button::new("0").position(init_vec),
-            num_1: widgets::Button::new("1").position(vec2(init_vec.x + FIRST, init_vec.y)),
-            num_2: widgets::Button::new("2").position(vec2(init_vec.x + SECOND, init_vec.y)),
-            num_3: widgets::Button::new("3").position(vec2(init_vec.x + THIRD, init_vec.y)),
-            num_4: widgets::Button::new("4").position(vec2(init_vec.x + FOURTH, init_vec.y)),
-            num_5: widgets::Button::new("5").position(vec2(init_vec.x, init_vec.y + button_offset)),
-            num_6: widgets::Button::new("6").position(vec2(init_vec.x + FIRST, init_vec.y + button_offset)),
-            num_7: widgets::Button::new("7").position(vec2(init_vec.x + SECOND, init_vec.y + button_offset)),
-            num_8: widgets::Button::new("8").position(vec2(init_vec.x + THIRD, init_vec.y + button_offset),),
-            num_9: widgets::Button::new("9").position(vec2(init_vec.x + FOURTH, init_vec.y + button_offset)),
+            num_0: widgets::Button::new("0")
+                .position(init_vec + BUTTON_SIZE * vec2(1., 3.))
+                .size(BUTTON_SIZE),
+            num_1: widgets::Button::new("1")
+                .position(init_vec + BUTTON_SIZE * vec2(0., 0.))
+                .size(BUTTON_SIZE),
+            num_2: widgets::Button::new("2")
+                .position(init_vec + BUTTON_SIZE * vec2(1., 0.))
+                .size(BUTTON_SIZE),
+            num_3: widgets::Button::new("3")
+                .position(init_vec + BUTTON_SIZE * vec2(2., 0.))
+                .size(BUTTON_SIZE),
+            num_4: widgets::Button::new("4")
+                .position(init_vec + BUTTON_SIZE * vec2(0., 1.))
+                .size(BUTTON_SIZE),
+            num_5: widgets::Button::new("5")
+                .position(init_vec + BUTTON_SIZE * vec2(1., 1.))
+                .size(BUTTON_SIZE),
+            num_6: widgets::Button::new("6")
+                .position(init_vec + BUTTON_SIZE * vec2(2., 1.))
+                .size(BUTTON_SIZE),
+            num_7: widgets::Button::new("7")
+                .position(init_vec + BUTTON_SIZE * vec2(0., 2.))
+                .size(BUTTON_SIZE),
+            num_8: widgets::Button::new("8")
+                .position(init_vec + BUTTON_SIZE * vec2(1., 2.))
+                .size(BUTTON_SIZE),
+            num_9: widgets::Button::new("9")
+                .position(init_vec + BUTTON_SIZE * vec2(2., 2.))
+                .size(BUTTON_SIZE),
             del: widgets::Button::new("D").position(vec2(20., 18.)),
             ac: widgets::Button::new("AC").position(vec2(80., 18.))
         }
