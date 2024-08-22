@@ -4,5 +4,14 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-hacks = { version = "0.1", path = "../hacks" }
-macroquad = {workspace = true}
+macroquad = "0.4.12"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
